@@ -1,0 +1,13 @@
+
+<h2> <%= @post.title%> </h2>
+<p> <%= @post.body %> </p>
+<%="#{@post.comments.size} Comments"%>
+
+<% @post.comments.each do |comment|%>
+  <div>
+    <h3><%= comment.user.username%></h3>
+    <p><%= comment.body%></p>
+  </div>
+<%end%>
+<h2>Add comment</h2>
+
