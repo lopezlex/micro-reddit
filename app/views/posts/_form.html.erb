@@ -1,0 +1,31 @@
+
+<%= form_with(model: post, local: true) do |form| %>
+  <div class="card mt-4">
+      <div class="card-body">
+        <div class="form-group">
+          <%= form.label :title %>
+          <%= form.text_field :title, class: "form-control" %>
+          <% post.errors.full_messages_for(:title).each do |message|%>
+            <div class="field_with_errors">
+              <label><small><%= message %>*</small></label>
+            </div>
+          <%end%>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.text_area :body, class: "form-control" %>
+          <% post.errors.full_messages_for(:body).each do |message|%>
+            
+            <div class="field_with_errors">
+              <label><small><%= message %>*</small></label>
+            </div>
+          <%end%>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit %>
+        </div>
+      <%# </div> %>
+    <%# </div> %>
+<% end %>

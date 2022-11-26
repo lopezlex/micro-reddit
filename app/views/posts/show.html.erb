@@ -1,13 +1,18 @@
 
-<h2> <%= @post.title%> </h2>
-<p> <%= @post.body %> </p>
-<%="#{@post.comments.size} Comments"%>
+<div class="card p-3 mb-3">
+  <h3><%= @post.title %></h3>
+  <% if current_user?(@post.user) %>
+    <span class="mb-2"><small> <%= link_to "Edit", edit_post_path(@post) %> / <%= link_to "Delete", post_path(@post),method: :delete, data: {confirm: 'Are you sure?'} %></small> </span> 
+  <%end%>
+    <p class="border p-3"><%= @post.body %> </p>
+</div>
 
-<% @post.comments.each do |comment|%>
-  <div>
-    <h3><%= comment.user.username%></h3>
-    <p><%= comment.body%></p>
-  </div>
-<%end%>
-<h2>Add comment</h2>
+<% if @post.comments.present? %>
+  <h3>Comments</h3>
+  <%= render @post.comments %>
+<%end %>
 
+<div class="card p-3">
+  <h3>Add comment</h3>
+  <%= render "comments/form" %>
+</div>

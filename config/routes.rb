@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-
   # get 'users/index'
   resources :users
   get 'signup' => 'users#new'
